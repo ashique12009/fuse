@@ -1,0 +1,4 @@
+<?php 
+function fuse_preprocess_page_title(&$variables) {
+  
+}

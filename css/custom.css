@@ -1,0 +1,8 @@
+/*menu*/
+.nav li.nav-item a:hover{
+  color: #fff !important;
+}
+/*basic page*/
+.basic-page-content #block-fuse-page-title{
+  display: none;
+}
