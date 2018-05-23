@@ -18,9 +18,6 @@
  *   - in_active_trail: TRUE if the link is in the active trail.
  */
 #}
-
-
-
 {% import _self as menus %}
 
 {#
@@ -32,31 +29,43 @@
 {% macro menu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
   {% if items %}
-    {% if menu_level == 0 %}
-      {# <ul{{ attributes }}> #}
-      <ul class="nav flex-column custom-scrollbar" id="sidenav" data-children=".nav-item">
-    {% else %}
-      <ul class="nav flex-column custom-scrollbar" id="sidenav" data-children=".nav-item">
-    {% endif %}
-
-    <li class="subheader">
-        <span>APPS</span>
-    </li>
-
-    {% for item in items %}
-      <li class="nav-item">
-        <a class="nav-link ripple" href="{{ item.url }}" data-url="index.html">
-          <i class="icon s-4 icon-view-quilt"></i>
-          <span>{{ item.title }}</span>
-        </a>
+    <ul class="nav flex-column custom-scrollbar" id="sidenav" data-children=".nav-item">
+      <li class="subheader">
+          <span>APPS</span>
       </li>
-      {# <li{{ item.attributes }}>
-        {{ link(item.title, item.url) }}
+      {% for item in items %}
         {% if item.below %}
-          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+          <li class="nav-item">
+            <a class="nav-link ripple with-arrow collapsed" data-toggle="collapse" data-target="#collapse-dashboards" href="#" aria-expanded="false" aria-controls="collapse-dashboards">
+              <i class="icon s-4 icon-view-quilt"></i>
+              <span>{{ item.title }}</span>
+            </a>
+            {{ menus.submenu_links(item.below, attributes, menu_level + 1) }}
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link ripple" href="{{ item.url }}" data-url="index.html">
+              <i class="icon s-4 icon-view-quilt"></i>
+              <span>{{ item.title }}</span>
+            </a>
+          </li>
         {% endif %}
-      </li> #}
-    {% endfor %}
+      {% endfor %}
     </ul>
   {% endif %}
+{% endmacro %}
+
+{% macro submenu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% for chunk in items|batch(7) %}
+    <ul id="collapse-dashboards" class='collapse ' role="tabpanel" aria-labelledby="heading-dashboards" data-children=".nav-item">
+      {% for item in chunk %}
+        <li class="nav-item">
+          <a class="nav-link ripple " href="{{ item.url }}" data-url="user-interface-page-layouts-simple-full-width.html">
+            <span>{{ item.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
 {% endmacro %}
