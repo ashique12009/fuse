@@ -77,22 +77,70 @@
                 {% include directory ~ '/templates/partials/top-menu.html.twig' %}
                 
                 <div class="content custom-scrollbar">
-                  <div class="page-layout simple full-width">
-                    <!-- HEADER -->
-                    <div class="page-header bg-primary text-auto p-6">
-                        <span class="h4">{{ node.label }}</span>
-                    </div>
-                    <!-- / HEADER -->
-                    <!-- CONTENT -->
-                    <div class="page-content p-6">
-                      <!-- DEMO CONTENT -->
-                      <div class="demo-content basic-page-content">
-                        {{ page.content }}
+                  <div id="login" class="p-8">
+
+                    {{ page.login }}
+                    
+                    <div class="form-wrapper md-elevation-8 p-8">
+
+                      <div class="logo bg-secondary">
+                          <span>F</span>
                       </div>
-                      <!-- / DEMO CONTENT -->
+
+                      <div class="title mt-4 mb-8">Log in to your account</div>
+
+                      <form name="loginForm" novalidate>
+
+                        <div class="form-group mb-4">
+                          <input type="email" class="form-control" id="loginFormInputEmail" aria-describedby="emailHelp" placeholder=" " />
+                          <label for="loginFormInputEmail">Email address</label>
+                        </div>
+
+                        <div class="form-group mb-4">
+                          <input type="password" class="form-control" id="loginFormInputPassword" placeholder="Password" />
+                          <label for="loginFormInputPassword">Password</label>
+                        </div>
+
+                        <div class="remember-forgot-password row no-gutters align-items-center justify-content-between pt-4">
+
+                          <div class="form-check remember-me mb-4">
+                            <label class="form-check-label">
+                              <input type="checkbox" class="form-check-input" aria-label="Remember Me" />
+                              <span class="checkbox-icon"></span>
+                              <span class="form-check-description">Remember Me</span>
+                            </label>
+                          </div>
+
+                          <a href="#" class="forgot-password text-secondary mb-4">Forgot Password?</a>
+                        </div>
+
+                        <button type="submit" class="submit-button btn btn-block btn-secondary my-4 mx-auto" aria-label="LOG IN">
+                          LOG IN
+                        </button>
+                      </form>
+                      <div class="separator">
+                        <span class="text">OR</span>
+                      </div>
+                      <button type="submit" class="google btn btn-block btn-secondary my-2 mx-auto" aria-label="LOG IN">
+                        <span>
+                          <i class="icon-google-plus s-4"></i>
+                          <span>Log in with Google</span>
+                        </span>
+                      </button>
+
+                      <button type="submit" class="facebook btn btn-block btn-secondary my-2 mx-auto" aria-label="LOG IN">
+                        <span>
+                          <i class="icon-facebook s-4"></i>
+                          <span>Log in with Facebook</span>
+                        </span>
+                      </button>
+
+                      <div class="register d-flex flex-column flex-sm-row align-items-center justify-content-center mt-8 mb-6 mx-auto">
+                        <span class="text mr-sm-2">Don't have an account?</span>
+                        <a class="link text-secondary" href="pages-auth-register.html">Create an account</a>
+                      </div>
                     </div>
-                    <!-- / CONTENT -->
-                  </div>
+                </div>
                 </div>
                 <nav id="footer" class="bg-dark text-auto row no-gutters align-items-center px-6">
                     <a class="btn btn-secondary text-capitalize" href="http://themeforest.net/item/fuse-angularjs-material-design-admin-template/12931855?ref=srcn" target="_blank">

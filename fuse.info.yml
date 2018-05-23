@@ -19,4 +19,6 @@ regions:
   header: 'Header'
   main_navigation: 'Main Navigation'
   content: 'Main Content'
+  member_section: 'Member List'
+  login: 'Login Section'
   footer: 'Footer'
