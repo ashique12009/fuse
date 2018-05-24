@@ -29,14 +29,11 @@
 {% macro menu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
   {% if items %}
-    
-      <li class="subheader">
-          <span>APPS</span>
-      </li>
+          
       {% for item in items %}
         {% if item.below %}
           <li class="nav-item">
-            <a class="nav-link ripple with-arrow collapsed" data-toggle="collapse" data-target="#collapse-dashboards" href="#" aria-expanded="false" aria-controls="collapse-dashboards">
+            <a class="nav-link ripple with-arrow collapsed" data-toggle="collapse" data-target="#collapse-user" href="#" aria-expanded="false" aria-controls="collapse-user">
               <i class="icon s-4 icon-view-quilt"></i>
               <span>{{ item.title }}</span>
             </a>
@@ -58,7 +55,7 @@
 {% macro submenu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
   {% for chunk in items|batch(7) %}
-    <ul id="collapse-dashboards" class='collapse ' role="tabpanel" aria-labelledby="heading-dashboards" data-children=".nav-item">
+    <ul id="collapse-user" class='collapse ' role="tabpanel" aria-labelledby="heading-dashboards" data-children=".nav-item">
       {% for item in chunk %}
         <li class="nav-item">
           <a class="nav-link ripple " href="{{ item.url }}" data-url="user-interface-page-layouts-simple-full-width.html">

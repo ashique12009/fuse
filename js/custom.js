@@ -1,5 +1,6 @@
 // Home page js
 (function ($) {
   // Jquery code goes here
-  
-})(jQuery);	
+  $('.user-login-form input[type="text"]').attr('placeholder', 'Username');
+  $('.user-login-form input[type="password"]').attr('placeholder', 'Password');
+})(jQuery);

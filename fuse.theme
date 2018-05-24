@@ -4,14 +4,53 @@ function fuse_preprocess_page_title(&$variables) {
 }
 
 function fuse_preprocess_page(&$variables) {
-  $query = \Drupal::entityQuery('user');
-  $query->condition('status', 1);
-  $results = $query->execute();
+  // $query = \Drupal::entityQuery('user');
+  // $query->condition('status', 1);
+  // $query->condition('uid', 1, '!=');
+  // $entity_ids = $query->execute();
+  // $users = \Drupal::entityTypeManager()->getStorage('user')->loadMultiple($entity_ids);
 
-
-
-  $variables['member_list'] = $results;
+  $query = db_query("SELECT u.uid, 
+                            uname.field_name_value,
+                            taxo.name, 
+                            office.field_office_value,
+                            fdata.mail,
+                            ph.field_phone_value,
+                            file.uri  
+                    FROM {users} as u 
+                    LEFT JOIN {user__field_name} as uname 
+                    ON u.uid=uname.entity_id 
+                    LEFT JOIN {user__field_position} as position 
+                    ON u.uid=position.entity_id 
+                    LEFT JOIN {taxonomy_term_field_data} as taxo 
+                    ON position.entity_id=taxo.tid
+                    LEFT JOIN {user__field_office} as office 
+                    ON u.uid=office.entity_id 
+                    LEFT JOIN {users_field_data} as fdata 
+                    ON u.uid=fdata.uid 
+                    LEFT JOIN {user__field_phone} as ph 
+                    ON u.uid=ph.entity_id
+                    LEFT JOIN {user__user_picture} as pic 
+                    ON u.uid=pic.entity_id 
+                    LEFT JOIN {file_managed} as file
+                    ON pic.user_picture_target_id=file.fid 
+                    WHERE u.uid<>0 AND u.uid<>1");
+  $records = $query->fetchAll();
+  
+  $variables['member_list'] = $records;
 
   $user = \Drupal::currentUser();
   $variables['logged_in'] = $user->isAuthenticated();
+
+  $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+  $name = $user->get('name')->value;
+  $variables['user_name'] = $name;
 }
+
+/**
+ * Implements hook_preprocess_user().
+ */
+/*function yourtheme_preprocess_user(&$variables) {
+  //$account = $variables['elements']['#user'];
+  //$variables['user_name'] = $account->getDisplayName();
+}*/

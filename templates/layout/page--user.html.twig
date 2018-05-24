@@ -81,33 +81,25 @@
                     <div id="project-dashboard" class="page-layout simple right-sidebar">
 
                         <div class="page-content-wrapper custom-scrollbar">
-
                             <!-- HEADER -->
                             <div class="page-header bg-primary text-auto d-flex flex-column justify-content-between px-6 pt-4 pb-0">
-
                                 <div class="row no-gutters align-items-start justify-content-between flex-nowrap">
-
                                     <div>
-                                        <span class="h2">Welcome back, John!</span>
+                                        <span class="h2">Welcome back, {{ user_name }}!</span>
                                     </div>
-
                                     <button type="button" class="sidebar-toggle-button btn btn-icon d-block d-xl-none" data-fuse-bar-toggle="dashboard-project-sidebar" aria-label="Toggle sidebar">
                                         <i class="icon icon-menu"></i>
                                     </button>
                                 </div>
 
                                 <div class="row no-gutters align-items-center project-selection">
-
                                     <div class="selected-project h6 px-4 py-2">ACME Corp. Backend App</div>
-
                                     <div class="project-selector">
                                         <button type="button" class="btn btn-icon">
                                             <i class="icon icon-dots-horizontal"></i>
                                         </button>
                                     </div>
-
                                 </div>
-
                             </div>
                             <!-- / HEADER -->
 
@@ -1048,9 +1040,9 @@
                                         <div class="widget-group row no-gutters">
                                             <!-- WIDGET 1 -->
                                             <div class="col-12">
-                                                {{ kint(member_list) }}
 
-                                                {{ page.member_section }}
+                                                {{ kint(member_list) }}
+                                                {% set members = member_list %}
                                                 
                                                 <div class="card">
                                                     <div class="widget-header px-4 py-6 row no-gutters align-items-center justify-content-between">
@@ -1058,7 +1050,7 @@
                                                             <span class="h5">Team Members</span>
                                                         </div>
                                                         <div>
-                                                            <span class="badge badge-danger">20 members</span>
+                                                            <span class="badge badge-danger">{{ members|length }} members</span>
                                                         </div>
                                                     </div>
                                                     <div class="divider"></div>
@@ -1077,14 +1069,22 @@
                                                             </thead>
 
                                                             <tbody>
+                                                                {% for member in members %}
                                                                 <tr>
-                                                                    <td><img class="avatar" src="{{ base_path ~ directory }}/assets/images/avatars/james.jpg"></td>
-                                                                    <td><span>Jack Gilbert</span></td>
-                                                                    <td><span>Design Manager</span></td>
-                                                                    <td><span>Johor Bahru</span></td>
-                                                                    <td><span>jgilbert48@mail.com</span></td>
-                                                                    <td><span>&#43;16 298 032 7774</span></td>
+                                                                    <td>
+                                                                        {% if member.uri is null %}
+                                                                        <img class="avatar" src="{{ base_path ~ directory }}/assets/images/avatars/profile.jpg">
+                                                                        {% else %}
+                                                                        <img class="avatar" src="{{ file_url(member.uri) }}">
+                                                                        {% endif %}
+                                                                    </td>
+                                                                    <td><span>{{ member.field_name_value }}</span></td>
+                                                                    <td><span>{{ member.name }}</span></td>
+                                                                    <td><span>{{ member.field_office_value }}</span></td>
+                                                                    <td><span>{{ member.mail }}</span></td>
+                                                                    <td><span>{{ member.field_phone_value }}</span></td>
                                                                 </tr>
+                                                                {% endfor %}
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -1103,15 +1103,15 @@
                         {% include directory ~ '/templates/partials/aside-sidebar.html.twig' %}
                         
                     </div>
-
                 </div>
+
                 <nav id="footer" class="bg-dark text-auto row no-gutters align-items-center px-6">
                     <a class="btn btn-secondary text-capitalize" href="http://themeforest.net/item/fuse-angularjs-material-design-admin-template/12931855?ref=srcn" target="_blank">
                         <i class="icon icon-cart mr-2 s-4"></i>Purchase FUSE Bootstrap
                     </a>
                 </nav>
             </div>
-
+            
             {% include directory ~ '/templates/partials/quick-panel-sidebar.html.twig' %}
 
         </div>
