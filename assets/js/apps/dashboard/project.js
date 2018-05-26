@@ -2080,7 +2080,7 @@
     {
         var chart = nv.models.pieChart()
             .options({
-                color       : ['#f44336', '#9c27b0', '#03a9f4', '#e91e63'],
+                color       : ['#fff', '#9c27b0', '#03a9f4', '#e91e63'],
                 margin      : {
                     top   : 0,
                     right : 0,
@@ -2176,7 +2176,9 @@
 
         function initChart()
         {
-            chartData = data.widget8.mainChart;
+            console.log($("#widget8-data").text());
+            chartData = JSON.parse($("#widget8-data").text());
+            //chartData = data.widget8.mainChart;
             chartd3.datum(chartData).call(chart);
         }
 
