@@ -21,4 +21,6 @@ regions:
   content: 'Main Content'
   member_section: 'Member List'
   login: 'Login Section'
+  budget_distribution: 'Budget Distribution'
+  budget_detail: 'Budget Detail'
   footer: 'Footer'
