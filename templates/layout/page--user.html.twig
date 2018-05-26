@@ -651,13 +651,19 @@
 
                                             <!-- WIDGET 9 -->
                                             <div class="col-12 col-lg-6 p-3">
-
                                                 <div class="widget widget9 card">
-
                                                     <div class="widget-header px-4 row no-gutters align-items-center justify-content-between">
-
                                                         <div class="col">
                                                             <span class="h6">Spent</span>
+                                                        </div>
+                                                        <div id="widget9-data">
+                                                        {% set res = page.budgetspent.custom_block.field_endpoint_url[0]['#context'].value %}
+                                                        {% set jsonobj = res | json_decode %}  
+                                                        {% if jsonobj is defined %}
+                                                        {{ res }}
+                                                        {% else %}
+                                                        {{ 'No data found!' }}
+                                                        {% endif %} 
                                                         </div>
 
                                                         <div class="">
@@ -670,18 +676,13 @@
                                                     </div>
 
                                                     <div class="widget-content">
-
                                                         <div id="widget9-weeklySpent" class="budget-item p-4 row no-gutters align-items-center">
-
                                                             <div class="col-12 col-sm-auto p-2">
-
                                                                 <div class="item-title text-muted">WEEKLY SPENT</div>
-
                                                                 <div class="pt-2 h2">
                                                                     <span class="text-muted">$</span>
-                                                                    <span class="item-value">3,630.15</span>
+                                                                    <span class="item-value">3,000</span>
                                                                 </div>
-
                                                             </div>
 
                                                             <div class="chart-wrapper col-12 col-sm">
@@ -690,14 +691,11 @@
                                                         </div>
 
                                                         <div id="widget9-totalSpent" class="budget-item p-4 row no-gutters align-items-center">
-
                                                             <div class="col-12 col-sm-auto p-2">
-
                                                                 <div class="item-title text-muted">TOTAL SPENT</div>
-
                                                                 <div class="pt-2 h2">
                                                                     <span class="text-muted">$</span>
-                                                                    <span class="item-value">34,758.34</span>
+                                                                    <span class="item-value">50,000</span>
                                                                 </div>
                                                             </div>
 
@@ -707,35 +705,26 @@
                                                         </div>
 
                                                         <div id="widget9-remaining" class="budget-item p-4 row no-gutters align-items-center">
-
                                                             <div class="col-12 col-sm-auto p-2">
-
                                                                 <div class="item-title text-muted">REMAINING</div>
-
                                                                 <div class="pt-2 h2">
                                                                     <span class="text-muted">$</span>
-                                                                    <span class="item-value">89.241,66</span>
+                                                                    <span class="item-value">7,500</span>
                                                                 </div>
-
                                                             </div>
 
                                                             <div class="chart-wrapper col-12 col-sm">
                                                                 <svg></svg>
                                                             </div>
-
                                                         </div>
 
                                                         <div class="divider w-100 my-2"></div>
-
                                                         <div id="widget9-total-budget" class="p-4">
-
                                                             <div class="item-title text-muted">TOTAL BUDGET</div>
-
                                                             <div class="pt-2 h2">
                                                                 <span class="text-muted">$</span>
-                                                                <span class="item-value">124.000,00</span>
+                                                                <span class="item-value">125.000,00</span>
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 </div>

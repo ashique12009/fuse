@@ -22,5 +22,6 @@ regions:
   member_section: 'Member List'
   login: 'Login Section'
   budget_distribution: 'Budget Distribution'
+  budget_spent: 'Budget Spent'
   budget_detail: 'Budget Detail'
   footer: 'Footer'

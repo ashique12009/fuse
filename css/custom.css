@@ -56,6 +56,7 @@
   color: #2196F3;
 }
 /*profile page*/
-#widget8-data{
+#widget8-data,
+#widget9-data{
   display: none;
 }

@@ -2176,7 +2176,7 @@
 
         function initChart()
         {
-            console.log($("#widget8-data").text());
+            //console.log($("#widget8-data").text());
             chartData = JSON.parse($("#widget8-data").text());
             //chartData = data.widget8.mainChart;
             chartd3.datum(chartData).call(chart);
@@ -2241,7 +2241,8 @@
 
             function initChart()
             {
-                chartData = data.widget9[id].chart[widget9Option];
+                //chartData = data.widget9[id].chart[widget9Option];
+                chartData = JSON.parse($("#widget9-data").text())[id].chart[widget9Option];
                 chartd3.datum(chartData).call(chart);
             }
 

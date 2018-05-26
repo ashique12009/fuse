@@ -75,9 +75,11 @@ function fuse_preprocess_html(&$variables) {
   $block = \Drupal::entityManager()->getStorage('block_content')->load($budget_detail_block_id);
   $block_view = \Drupal::entityManager()->getViewBuilder('block_content')->view($block);
   $variables['page']['budgetdistribution']['custom_block'] = $block_view;
+  
+  $budget_detail_block_id = 3;
+  $field_name = 'field_endpoint_url';
+  $block = \Drupal::entityManager()->getStorage('block_content')->load($budget_detail_block_id);
+  $block_view = \Drupal::entityManager()->getViewBuilder('block_content')->view($block);
+  $variables['page']['budgetspent']['custom_block'] = $block_view;
 
-}
-
-function fuse_preprocess_block(&$variables) {
-    $variables['var']="some text";
 }
