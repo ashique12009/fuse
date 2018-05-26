@@ -1,0 +1,48 @@
+<div class="col-12">
+  {% set members = member_list %}                                                
+  <div class="card">
+      <div class="widget-header px-4 py-6 row no-gutters align-items-center justify-content-between">
+          <div class="col">
+              <span class="h5">Team Members</span>
+          </div>
+          <div>
+              <span class="badge badge-danger">{{ members|length }} members</span>
+          </div>
+      </div>
+      <div class="divider"></div>
+      <div class="widget-content table-responsive">
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>
+                      </th>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Office</th>
+                      <th>E-Mail</th>
+                      <th>Phone</th>
+                  </tr>
+              </thead>
+
+              <tbody>
+                  {% for member in members %}
+                  <tr>
+                      <td>
+                          {% if member.uri is null %}
+                          <img class="avatar" src="{{ base_path ~ directory }}/assets/images/avatars/profile.jpg">
+                          {% else %}
+                          <img class="avatar" src="{{ file_url(member.uri) }}">
+                          {% endif %}
+                      </td>
+                      <td><span>{{ member.field_name_value }}</span></td>
+                      <td><span>{{ member.name }}</span></td>
+                      <td><span>{{ member.field_office_value }}</span></td>
+                      <td><span>{{ member.mail }}</span></td>
+                      <td><span>{{ member.field_phone_value }}</span></td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>

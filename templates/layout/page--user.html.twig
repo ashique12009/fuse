@@ -126,60 +126,17 @@
 
                                         <!-- WIDGET GROUP -->
                                         <div class="widget-group row no-gutters">
-
                                             <!-- WIDGET 1 -->
-                                            <div class="col-12 col-sm-6 col-xl-3 p-3">
-
-                                                <div class="widget widget1 card">
-
-                                                    <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
-
-                                                        <div class="col">
-
-                                                            <select class="h6 custom-select">
-                                                                <option selected="" value="today">Today</option>
-                                                                <option value="yesterday">Yesterday</option>
-                                                                <option value="tomorrow">Tomorrow</option>
-                                                            </select>
-
-                                                        </div>
-
-                                                        <button type="button" class="btn btn-icon">
-                                                            <i class="icon icon-dots-vertical"></i>
-                                                        </button>
-
-                                                    </div>
-
-                                                    <div class="widget-content pt-2 pb-8 d-flex flex-column align-items-center justify-content-center">
-
-                                                        <div class="title text-secondary">25</div>
-
-                                                        <div class="sub-title h6 text-muted">DUE TASKS</div>
-
-                                                    </div>
-
-                                                    <div class="widget-footer p-4 bg-light row no-gutters align-items-center">
-
-                                                        <span class="text-muted">Completed:</span>
-
-                                                        <span class="ml-2">7</span>
-
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {% include directory ~ '/templates/partials/homewidget1.html.twig'%}
                                             <!-- / WIDGET 1 -->
 
                                             <!-- WIDGET 2 -->
                                             <div class="col-12 col-sm-6 col-xl-3 p-3">
-
                                                 <div class="widget widget2 card">
-
                                                     <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
-
                                                         <div class="col">
                                                             <span class="h6">Overdue</span>
                                                         </div>
-
                                                         <button type="button" class="btn btn-icon">
                                                             <i class="icon icon-dots-vertical"></i>
                                                         </button>
@@ -187,7 +144,7 @@
 
                                                     <div class="widget-content pt-2 pb-8 d-flex flex-column align-items-center justify-content-center">
                                                         <div class="title text-danger">4</div>
-                                                        <div class="sub-title h6 text-muted">TASKS</div>
+                                                        <div class="sub-title h6">TASKS</div>
                                                     </div>
 
                                                     <div class="widget-footer p-4 bg-light row no-gutters align-items-center">
@@ -200,9 +157,7 @@
 
                                             <!-- WIDGET 3 -->
                                             <div class="col-12 col-sm-6 col-xl-3 p-3">
-
                                                 <div class="widget widget3 card">
-
                                                     <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
 
                                                         <div class="col">
@@ -230,9 +185,7 @@
 
                                             <!-- WIDGET 4 -->
                                             <div class="col-12 col-sm-6 col-xl-3 p-3">
-
                                                 <div class="widget widget4 card">
-
                                                     <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
 
                                                         <div class="col">
@@ -611,190 +564,18 @@
                                         <!-- / WIDGET GROUP -->
                                     </div>
                                     <div class="tab-pane fade p-3" id="budget-summary-tab-pane" role="tabpanel" aria-labelledby="budget-summary-tab">
-
                                         <!-- WIDGET GROUP -->
                                         <div class="widget-group row no-gutters">
-
                                             <!-- WIDGET 8 -->
-                                            <div class="col-12 col-lg-6 p-3">
-
-                                                <div class="widget widget8 card">
-
-                                                    <div class="widget-header px-4 row no-gutters align-items-center justify-content-between">
-                                                        <div class="col">
-                                                            <span class="h6">Budget Distribution</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="widget-content row">
-
-                                                        <div class="col-12">
-
-                                                            <div id="widget8-main-chart" class="p-4">
-                                                                <div id="widget8-data">
-                                                                    {% set res = page.budgetdistribution.custom_block.field_endpoint_url[0]['#context'].value %}
-                                                                    {% set jsonobj = res | json_decode %}  
-                                                                    {% if jsonobj is defined %}
-                                                                    {{ res }}
-                                                                    {% else %}
-                                                                    {{ 'No data found!' }}
-                                                                    {% endif %} 
-                                                                </div>
-                                                                <svg></svg>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {% include directory ~ '/templates/partials/widget8.html.twig' %}
                                             <!-- / WIDGET 8 -->
 
                                             <!-- WIDGET 9 -->
-                                            <div class="col-12 col-lg-6 p-3">
-                                                <div class="widget widget9 card">
-                                                    <div class="widget-header px-4 row no-gutters align-items-center justify-content-between">
-                                                        <div class="col">
-                                                            <span class="h6">Spent</span>
-                                                        </div>
-                                                        <div id="widget9-data">
-                                                        {% set res = page.budgetspent.custom_block.field_endpoint_url[0]['#context'].value %}
-                                                        {% set jsonobj = res | json_decode %}  
-                                                        {% if jsonobj is defined %}
-                                                        {{ res }}
-                                                        {% else %}
-                                                        {{ 'No data found!' }}
-                                                        {% endif %} 
-                                                        </div>
-
-                                                        <div class="">
-                                                            <select id="widget9-option-select" class="h6 custom-select">
-                                                                <option selected="" value="TW">This Week</option>
-                                                                <option value="LW">Last Week</option>
-                                                                <option value="2W">2 Weeks Ago</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="widget-content">
-                                                        <div id="widget9-weeklySpent" class="budget-item p-4 row no-gutters align-items-center">
-                                                            <div class="col-12 col-sm-auto p-2">
-                                                                <div class="item-title text-muted">WEEKLY SPENT</div>
-                                                                <div class="pt-2 h2">
-                                                                    <span class="text-muted">$</span>
-                                                                    <span class="item-value">3,000</span>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="chart-wrapper col-12 col-sm">
-                                                                <svg></svg>
-                                                            </div>
-                                                        </div>
-
-                                                        <div id="widget9-totalSpent" class="budget-item p-4 row no-gutters align-items-center">
-                                                            <div class="col-12 col-sm-auto p-2">
-                                                                <div class="item-title text-muted">TOTAL SPENT</div>
-                                                                <div class="pt-2 h2">
-                                                                    <span class="text-muted">$</span>
-                                                                    <span class="item-value">50,000</span>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="chart-wrapper col-12 col-sm">
-                                                                <svg></svg>
-                                                            </div>
-                                                        </div>
-
-                                                        <div id="widget9-remaining" class="budget-item p-4 row no-gutters align-items-center">
-                                                            <div class="col-12 col-sm-auto p-2">
-                                                                <div class="item-title text-muted">REMAINING</div>
-                                                                <div class="pt-2 h2">
-                                                                    <span class="text-muted">$</span>
-                                                                    <span class="item-value">7,500</span>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="chart-wrapper col-12 col-sm">
-                                                                <svg></svg>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="divider w-100 my-2"></div>
-                                                        <div id="widget9-total-budget" class="p-4">
-                                                            <div class="item-title text-muted">TOTAL BUDGET</div>
-                                                            <div class="pt-2 h2">
-                                                                <span class="text-muted">$</span>
-                                                                <span class="item-value">125.000,00</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {% include directory ~ '/templates/partials/widget9.html.twig' %}
                                             <!-- / WIDGET 9 -->
 
                                             <!-- WIDGET 10 -->
-                                            <div class="col-12 p-3">
-
-                                                <div class="widget widget10 card">
-
-                                                    <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
-
-                                                        <div class="col">
-                                                            <span class="h5">Budget Details</span>
-                                                        </div>
-
-                                                        <button type="button" class="btn btn-icon">
-                                                            <i class="icon icon-dots-vertical"></i>
-                                                        </button>
-
-                                                    </div>
-
-                                                    <div class="widget-content p-4 table-responsive">
-                                                        {% set res = page.sidebar_first.custom_block.field_endpoint_url[0]['#context'].value %}
-                                                        {% set jsonobj = res | json_decode %}
-                                                        {% if jsonobj == "" %}
-                                                        <h4>No data found!</h4>
-                                                        {% else %} 
-                                                        <table class="table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Budget Type</th>
-                                                                    <th>Total Budget</th>
-                                                                    <th>Spent ($)</th>
-                                                                    <th>Spent (%)</th>
-                                                                    <th>Remaining ($)</th>
-                                                                    <th>Remaining (%)</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                {% for jobj in jsonobj %}
-                                                                <tr>
-                                                                    <td>
-                                                                        <span class="badge badge-primary">{{ jobj.budget_type }}</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        <span class="text-bold">{{ jobj.total_budget }}</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        <span class="">{{ jobj.spent_amount }}</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        <span class="text-success">{{ jobj.spent_percentage }}</span>
-                                                                        <i class="icon icon-trending-up text-success s-4"></i>
-                                                                    </td>
-                                                                    <td>
-                                                                        <span class="">{{ jobj.remaining_amount }}</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        <span class="">{{ jobj.remaining_percentage }}</span>
-                                                                    </td>
-                                                                </tr>
-                                                                {% endfor %}
-                                                            </tbody>
-                                                        </table>
-                                                        {% endif %}
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {% include directory ~ '/templates/partials/widget10.html.twig' %}
                                             <!-- / WIDGET 10 -->
                                         </div>
                                         <!-- / WIDGET GROUP -->
@@ -803,56 +584,7 @@
                                         <!-- WIDGET GROUP -->
                                         <div class="widget-group row no-gutters">
                                             <!-- WIDGET 1 -->
-                                            <div class="col-12">
-
-                                                {% set members = member_list %}
-                                                
-                                                <div class="card">
-                                                    <div class="widget-header px-4 py-6 row no-gutters align-items-center justify-content-between">
-                                                        <div class="col">
-                                                            <span class="h5">Team Members</span>
-                                                        </div>
-                                                        <div>
-                                                            <span class="badge badge-danger">{{ members|length }} members</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="divider"></div>
-                                                    <div class="widget-content table-responsive">
-                                                        <table class="table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>
-                                                                    </th>
-                                                                    <th>Name</th>
-                                                                    <th>Position</th>
-                                                                    <th>Office</th>
-                                                                    <th>E-Mail</th>
-                                                                    <th>Phone</th>
-                                                                </tr>
-                                                            </thead>
-
-                                                            <tbody>
-                                                                {% for member in members %}
-                                                                <tr>
-                                                                    <td>
-                                                                        {% if member.uri is null %}
-                                                                        <img class="avatar" src="{{ base_path ~ directory }}/assets/images/avatars/profile.jpg">
-                                                                        {% else %}
-                                                                        <img class="avatar" src="{{ file_url(member.uri) }}">
-                                                                        {% endif %}
-                                                                    </td>
-                                                                    <td><span>{{ member.field_name_value }}</span></td>
-                                                                    <td><span>{{ member.name }}</span></td>
-                                                                    <td><span>{{ member.field_office_value }}</span></td>
-                                                                    <td><span>{{ member.mail }}</span></td>
-                                                                    <td><span>{{ member.field_phone_value }}</span></td>
-                                                                </tr>
-                                                                {% endfor %}
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {% include directory ~ '/templates/partials/widget1.html.twig' %}
                                             <!-- WIDGET 1 -->
                                         </div>
                                     </div>

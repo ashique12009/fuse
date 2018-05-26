@@ -1,0 +1,35 @@
+<div class="col-12 col-sm-6 col-xl-3 p-3">
+  <div class="widget widget1 card">
+      <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
+          <div class="col">
+              <div id="w1-data">
+              {% set res = page.homewidget1.custom_block.field_endpoint_url[0]['#context'].value %}
+              {% set jsonobj = res | json_decode %}  
+              {% if jsonobj is defined %}
+              {{ res }}
+              {% else %}
+              {{ 'No data found!' }}
+              {% endif %} 
+              </div>
+              <select id="w1-select" class="h6 custom-select">
+                  {% if jsonobj.ranges|length > 0 %}
+                  {% for k,v in jsonobj.ranges %}
+                  <option value="{{ k }}">{{ v }}</option>
+                  {% endfor %}
+                  {% endif %}
+              </select>
+          </div>
+          <button type="button" class="btn btn-icon">
+              <i class="icon icon-dots-vertical"></i>
+          </button>
+      </div>
+      <div class="widget-content pt-2 pb-8 d-flex flex-column align-items-center justify-content-center">
+          <div class="title text-secondary">25</div>
+          <div class="sub-title h6">DUE TASKS</div>
+      </div>
+      <div class="widget-footer p-4 bg-light row no-gutters align-items-center">
+          <span class="text-muted">Completed:</span>
+          <span class="ml-2">7</span>
+      </div>
+  </div>
+  </div>

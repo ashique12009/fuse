@@ -1,0 +1,26 @@
+<div class="col-12 col-lg-6 p-3">
+  <div class="widget widget8 card">
+      <div class="widget-header px-4 row no-gutters align-items-center justify-content-between">
+          <div class="col">
+              <span class="h6">Budget Distribution</span>
+          </div>
+      </div>
+
+      <div class="widget-content row">
+          <div class="col-12">
+              <div id="widget8-main-chart" class="p-4">
+                  <div id="widget8-data">
+                      {% set res = page.budgetdistribution.custom_block.field_endpoint_url[0]['#context'].value %}
+                      {% set jsonobj = res | json_decode %}  
+                      {% if jsonobj is defined %}
+                      {{ res }}
+                      {% else %}
+                      {{ 'No data found!' }}
+                      {% endif %} 
+                  </div>
+                  <svg></svg>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

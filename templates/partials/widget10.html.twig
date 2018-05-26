@@ -1,0 +1,60 @@
+<div class="col-12 p-3">
+  <div class="widget widget10 card">
+      <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
+          <div class="col">
+              <span class="h5">Budget Details</span>
+          </div>
+
+          <button type="button" class="btn btn-icon">
+              <i class="icon icon-dots-vertical"></i>
+          </button>
+
+      </div>
+
+      <div class="widget-content p-4 table-responsive">
+          {% set res = page.sidebar_first.custom_block.field_endpoint_url[0]['#context'].value %}
+          {% set jsonobj = res | json_decode %}
+          {% if jsonobj == "" %}
+          <h4>No data found!</h4>
+          {% else %} 
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>Budget Type</th>
+                      <th>Total Budget</th>
+                      <th>Spent ($)</th>
+                      <th>Spent (%)</th>
+                      <th>Remaining ($)</th>
+                      <th>Remaining (%)</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for jobj in jsonobj %}
+                  <tr>
+                      <td>
+                          <span class="badge badge-primary">{{ jobj.budget_type }}</span>
+                      </td>
+                      <td>
+                          <span class="text-bold">{{ jobj.total_budget }}</span>
+                      </td>
+                      <td>
+                          <span class="">{{ jobj.spent_amount }}</span>
+                      </td>
+                      <td>
+                          <span class="text-success">{{ jobj.spent_percentage }}</span>
+                          <i class="icon icon-trending-up text-success s-4"></i>
+                      </td>
+                      <td>
+                          <span class="">{{ jobj.remaining_amount }}</span>
+                      </td>
+                      <td>
+                          <span class="">{{ jobj.remaining_percentage }}</span>
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+          {% endif %}
+      </div>
+  </div>
+</div>

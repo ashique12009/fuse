@@ -2256,4 +2256,34 @@
         widget9Option = $(ev.target).val();
         $(window).trigger('update:widget9');
     });
+
+    $(document).ready(function(){
+        w1Data = JSON.parse($("#w1-data").text());
+        for ( k in w1Data.data.count ) {
+            $(".widget1 .title").text(w1Data.data.count[k]);            
+            break;
+        }
+        $(".widget1 .sub-title").text(w1Data.data.label);
+
+        // footer
+        for ( k in w1Data.data.extra.count ) {
+            $(".widget1 .widget-footer .ml-2").text(w1Data.data.extra.count[k]);
+            break;
+        }
+        $(".widget1 .widget-footer .text-muted").text(w1Data.data.extra.label);
+    });
+
+    $("#w1-select").on('change', function(){
+        selectionValue = $(this).val();
+        w1Data = JSON.parse($("#w1-data").text());
+        console.log(w1Data);
+        console.log(w1Data.data.count[selectionValue]);
+        $(".widget1 .title").text(w1Data.data.count[selectionValue]);
+        $(".widget1 .sub-title").text(w1Data.data.label);
+        
+        // footer
+        $(".widget1 .widget-footer .ml-2").text(w1Data.data.extra.count[selectionValue]);
+        $(".widget1 .widget-footer .text-muted").text(w1Data.data.extra.label);
+    });
+
 })();
