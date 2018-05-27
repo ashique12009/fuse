@@ -1,0 +1,104 @@
+<div class="col-12 p-3">
+  <div class="widget widget5 card">
+      <div class="widget-header px-4 row no-gutters align-items-center justify-content-between">
+          <div class="col">
+              <span class="h6">Github Issues</span>
+          </div>
+          <div id="widget5-data">
+          {% set res = page.homewgithub.custom_block.field_endpoint_url[0]['#context'].value %}
+          {% set jsonobj = res | json_decode %}  
+          {% if jsonobj is defined %}
+          {{ res }}
+          {% else %}
+          {{ 'No data found!' }}
+          {% endif %} 
+          </div>
+
+          <div>
+              <button type="button" class="widget5-option-change-btn btn btn-link" data-interval="TW">
+                  This Week
+              </button>
+              <button type="button" class="widget5-option-change-btn btn btn-link" data-interval="LW">
+                  Last Week
+              </button>
+              <button type="button" class="widget5-option-change-btn btn btn-link" data-interval="2W">
+                  2 WEEKS AGO
+              </button>
+          </div>
+      </div>
+
+      <div class="widget-content p-4">
+          <div class="row">
+              <div class="col-12 col-lg-6">
+                  <div id="widget5-main-chart">
+                      <svg></svg>
+                  </div>
+              </div>
+
+              <div class="col-12 col-lg-6">
+                  <div id="widget5-supporting-charts" class="row">
+                      <div class="col-6 p-4">
+                          <div id="widget5-created-chart">
+                              <div class="h6 text-muted">CREATED</div>
+                              <div class="h2 count">-</div>
+                              <div class="chart-wrapper">
+                                  <svg></svg>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-6 p-4">
+                          <div id="widget5-closed-chart">
+                              <div class="h6 text-muted">CLOSED</div>
+                              <div class="h2 count">-</div>
+                              <div class="chart-wrapper">
+                                  <svg></svg>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-6 p-4">
+                          <div id="widget5-re-opened-chart">
+                              <div class="h6 text-muted">RE-OPENED</div>
+                              <div class="h2 count">-</div>
+                              <div class="chart-wrapper">
+                                  <svg></svg>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-6 p-4">
+                          <div id="widget5-wont-fix-chart">
+                              <div class="h6 text-muted">WON'T FIX</div>
+                              <div class="h2 count">-</div>
+                              <div class="chart-wrapper">
+                                  <svg></svg>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-6 p-4">
+                          <div id="widget5-needs-test-chart">
+                              <div class="h6 text-muted">NEED'S TEST</div>
+                              <div class="h2 count">-</div>
+                              <div class="chart-wrapper">
+                                  <svg></svg>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-6 p-4">
+                          <div id="widget5-fixed-chart">
+                              <div class="h6 text-muted">FIXED</div>
+                              <div class="h2 count">-</div>
+                              <div class="chart-wrapper">
+                                  <svg></svg>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="col-12 col-lg-6 p-3">
+
+  <div class="widget widget6 card">
+
+      <div class="widget-header px-4 row no-gutters align-items-center justify-content-between">
+
+          <div class="col">
+              <span class="h6">Task Distrubition</span>
+          </div>
+
+          <div id="widget6-data">
+          {% set res = page.hometaskdist.custom_block.field_endpoint_url[0]['#context'].value %}
+          {% set jsonobj = res | json_decode %}  
+          {% if jsonobj is defined %}
+          {{ res }}
+          {% else %}
+          {{ 'No data found!' }}
+          {% endif %} 
+          </div>
+
+          <div class="">
+              <select id="widget6-option-select" class="h6 custom-select">
+                  <option selected="" value="TW">This Week</option>
+                  <option value="LW">Last Week</option>
+                  <option value="2W">2 Weeks Ago</option>
+              </select>
+          </div>
+      </div>
+
+      <div class="widget-content">
+          <div class="row no-gutters">
+              <div class="col-12">
+                  <div id="widget6-main-chart" class="p-4">
+                      <svg></svg>
+                  </div>
+              </div>
+
+              <div class="divider col-12"></div>
+
+              <div id="added-tasks" class="col-6 d-flex flex-column align-items-center justify-content-center py-4">
+                  <div class="count h2">-</div>
+                  <div class="count-title">Tasks Added</div>
+              </div>
+
+              <div id="completed-tasks" class="col-6 d-flex flex-column align-items-center justify-content-center py-4">
+                  <div class="count h2">-</div>
+                  <div class="count-title">Tasks Completed</div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

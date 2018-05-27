@@ -22,6 +22,7 @@ regions:
   member_section: 'Member List'
   login: 'Login Section'
   home_widget_1: 'Home Widget 1'
+  home_widget_github: 'Home Widget Github'
   home_widget_task_distribution: 'Home Task Distribution'
   home_widget_schedule: 'Home Schedule'
   budget_distribution: 'Budget Distribution'

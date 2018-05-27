@@ -1,0 +1,50 @@
+<div class="col-12 col-lg-6 p-3">
+
+    <div class="widget widget-7 card">
+
+        <div class="widget-header px-4 row no-gutters align-items-center justify-content-between">
+
+            <div class="col">
+                <span class="h6">Schedule</span>
+            </div>
+            <div id="w7-data">
+            {% set res = page.homeschedule.custom_block.field_endpoint_url[0]['#context'].value %}
+            {% set jsonobj = res | json_decode %}  
+            {% if jsonobj is defined %}
+            {{ res }}
+            {% else %}
+            {{ 'No data found!' }}
+            {% endif %} 
+            </div>
+
+            <div class="">
+                <select id="w7-select" class="h6 custom-select">
+                    {% for k,v in jsonobj.ranges %}
+                    <option value="{{ k }}">{{ v }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="widget-content p-4">
+            {% for k,v in jsonobj.ranges %}
+                {% for sdata in jsonobj.schedule[k] %}
+                    <div class="inactive {{ k }} py-4 row no-gutters align-items-center justify-content-between">
+                        <div class="col">
+                            <div class="h6">{{ sdata.title }}</div>
+                            <div>
+                                <span class="text-muted">{{ sdata.time }}</span>
+                                <span>{{ sdata.location }}</span>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-icon">
+                                <i class="icon icon-dots-vertical"></i>
+                            </button>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

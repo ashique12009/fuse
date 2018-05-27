@@ -1991,13 +1991,14 @@
 
         $(window).bind('update:widget5', function ()
         {
-
             initChart();
         })
 
         function initChart()
         {
-            chartData = data.widget5.mainChart[widget5Option];
+            //chartData = data.widget5.mainChart[widget5Option];
+            chartData = JSON.parse($("#widget5-data").text()).mainChart[widget5Option];
+            // console.log(chartData);
             chartd3.datum(chartData).call(chart);
         }
 
@@ -2049,15 +2050,17 @@
 
             $(window).bind('update:widget5', function ()
             {
-
                 initChart();
-                $('#widget5-' + id + '-chart .count').text(data.widget5.supporting[id].count[widget5Option]);
+                //$('#widget5-' + id + '-chart .count').text(data.widget5.supporting[id].count[widget5Option]);
+                $('#widget5-' + id + '-chart .count').text(JSON.parse($("#widget5-data").text()).supporting[id].count[widget5Option]);
             })
 
             function initChart()
             {
-                chartData = data.widget5.supporting[id].chart[widget5Option];
+                //chartData = data.widget5.supporting[id].chart[widget5Option];
+                chartData = JSON.parse($("#widget5-data").text()).supporting[id].chart[widget5Option];
                 chartd3.datum(chartData).call(chart);
+                $('#widget5-' + id + '-chart .count').text(JSON.parse($("#widget5-data").text()).supporting[id].count[widget5Option]);
             }
 
             return chart;
@@ -2111,15 +2114,17 @@
 
         $(window).bind('update:widget6', function ()
         {
-
             initChart();
-            $('#added-tasks .count').text(data.widget6.footerLeft.count[widget6Option]);
-            $('#completed-tasks .count').text(data.widget6.footerRight.count[widget6Option]);
+            //$('#added-tasks .count').text(data.widget6.footerLeft.count[widget6Option]);
+            $('#added-tasks .count').text(JSON.parse($("#widget6-data").text()).footerLeft.count[widget6Option]);
+            //$('#completed-tasks .count').text(data.widget6.footerRight.count[widget6Option]);
+            $('#completed-tasks .count').text(JSON.parse($("#widget6-data").text()).footerRight.count[widget6Option]);
         })
 
         function initChart()
         {
-            chartData = data.widget6.mainChart[widget6Option];
+            //chartData = data.widget6.mainChart[widget6Option];
+            chartData = JSON.parse($("#widget6-data").text()).mainChart[widget6Option];
             chartd3.datum(chartData).call(chart);
         }
 
@@ -2299,6 +2304,19 @@
         // footer
         $(".widget4 .widget-footer .ml-2").text(w1Data.data.extra.count);
         $(".widget4 .widget-footer .text-muted").text(w1Data.data.extra.label);
+
+        // home schedule widget
+        $(".widget-7 .inactive").hide();
+        // get first select option value
+        var selValue = $("#w7-select").val();
+        // now display only selValue
+        $(".widget-7 ."+selValue).show();
+    });
+
+    $("#w7-select").on('change', function(){
+        var sel_value = $(this).val();
+        $(".widget-7 .inactive").hide();
+        $(".widget-7 ."+sel_value).show();
     });
 
     $("#w1-select").on('change', function(){
@@ -2312,6 +2330,19 @@
         // footer
         $(".widget1 .widget-footer .ml-2").text(w1Data.data.extra.count[selectionValue]);
         $(".widget1 .widget-footer .text-muted").text(w1Data.data.extra.label);
+    });
+    
+    $("#w7-select").on('change', function(){
+        selectionValue = $(this).val();
+        w1Data = JSON.parse($("#w7-data").text());
+        console.log(w1Data);
+        console.log(w1Data.data.count[selectionValue]);
+        $(".widget7 .title").text(w1Data.data.count[selectionValue]);
+        $(".widget7 .sub-title").text(w1Data.data.label);
+        
+        // footer
+        $(".widget7 .widget-footer .ml-2").text(w1Data.data.extra.count[selectionValue]);
+        $(".widget7 .widget-footer .text-muted").text(w1Data.data.extra.label);
     });
 
 })();
