@@ -1,24 +1,21 @@
 <aside class="page-sidebar custom-scrollbar" data-fuse-bar="dashboard-project-sidebar" data-fuse-bar-media-step="lg" data-fuse-bar-position="right">
   <!-- WIDGET GROUP -->
   <div class="widget-group">
+        <span class="close-me">X</span>
+        <!-- NOW WIDGET -->
+        <div class="widget widget-now">
+            <div class="widget-header row no-gutters align-items-center justify-content-between pl-4 py-4">
+                <div class="h6">{{ "now"|date('l, h:i') }}</div>
+                <button type="button" class="btn btn-icon" aria-label="Options">
+                    <i class="icon icon-dots-vertical"></i>
+                </button>
+            </div>
 
-      <!-- NOW WIDGET -->
-      <div class="widget widget-now">
-
-          <div class="widget-header row no-gutters align-items-center justify-content-between pl-4 py-4">
-
-              <div class="h6">{{ "now"|date('l, h:i') }}</div>
-
-              <button type="button" class="btn btn-icon" aria-label="Options">
-                  <i class="icon icon-dots-vertical"></i>
-              </button>
-          </div>
-
-          <div class="widget-content d-flex flex-column align-items-center justify-content-center p-4 pb-6">
-              <div class="month text-muted">{{ "now"|date('m') }}</div>
-              <div class="day text-muted">{{ "now"|date('d') }}</div>
-              <div class="year text-muted">{{ "now"|date('Y') }}</div>
-          </div>
+            <div class="widget-content d-flex flex-column align-items-center justify-content-center p-4 pb-6">
+                <div class="month text-muted">{{ "now"|date('m') }}</div>
+                <div class="day text-muted">{{ "now"|date('d') }}</div>
+                <div class="year text-muted">{{ "now"|date('Y') }}</div>
+            </div>
 
       </div>
       <!-- / NOW WIDGET -->

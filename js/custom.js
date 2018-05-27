@@ -3,5 +3,11 @@
   // Jquery code goes here
   $('.user-login-form input[type="text"]').attr('placeholder', 'Username');
   $('.user-login-form input[type="password"]').attr('placeholder', 'Password');
-  
+  // Sidebar
+  $('.close-me').on('click', function(){
+    $('.page-sidebar').hide();
+  });
+  $('.side-bar-button').on('click', function(){
+    $('.page-sidebar').show();
+  });
 })(jQuery);

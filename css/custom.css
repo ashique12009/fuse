@@ -67,3 +67,15 @@
 #widget9-data{
   display: none;
 }
+/*sidebar*/
+.close-me{
+  cursor: pointer;
+  display: block;
+  margin-left: 15px;
+  margin-top: 10px;
+  width: 24px;
+  background-color: #ccc;
+  padding: 1px;
+  border-radius: 10px;
+  text-align: center;
+}
