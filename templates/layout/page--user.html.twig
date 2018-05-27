@@ -131,99 +131,26 @@
                                             <!-- / WIDGET 1 -->
 
                                             <!-- WIDGET 2 -->
-                                            <div class="col-12 col-sm-6 col-xl-3 p-3">
-                                                <div class="widget widget2 card">
-                                                    <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
-                                                        <div class="col">
-                                                            <span class="h6">Overdue</span>
-                                                        </div>
-                                                        <button type="button" class="btn btn-icon">
-                                                            <i class="icon icon-dots-vertical"></i>
-                                                        </button>
-                                                    </div>
-
-                                                    <div class="widget-content pt-2 pb-8 d-flex flex-column align-items-center justify-content-center">
-                                                        <div class="title text-danger">4</div>
-                                                        <div class="sub-title h6">TASKS</div>
-                                                    </div>
-
-                                                    <div class="widget-footer p-4 bg-light row no-gutters align-items-center">
-                                                        <span class="text-muted">Yesterday's:</span>
-                                                        <span class="ml-2">2</span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {% include directory ~ '/templates/partials/homewidget2.html.twig' %}
                                             <!-- / WIDGET 2 -->
 
                                             <!-- WIDGET 3 -->
-                                            <div class="col-12 col-sm-6 col-xl-3 p-3">
-                                                <div class="widget widget3 card">
-                                                    <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
-
-                                                        <div class="col">
-                                                            <span class="h6">Issues</span>
-                                                        </div>
-
-                                                        <button type="button" class="btn btn-icon">
-                                                            <i class="icon icon-dots-vertical"></i>
-                                                        </button>
-
-                                                    </div>
-
-                                                    <div class="widget-content pt-2 pb-8 d-flex flex-column align-items-center justify-content-center">
-                                                        <div class="title text-warning">32</div>
-                                                        <div class="sub-title h6 text-muted">OPEN</div>
-                                                    </div>
-
-                                                    <div class="widget-footer p-4 bg-light row no-gutters align-items-center">
-                                                        <span class="text-muted">Closed today:</span>
-                                                        <span class="ml-2">0</span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {% include directory ~ '/templates/partials/homewidgetissue.html.twig' %}
                                             <!-- / WIDGET 3 -->
 
                                             <!-- WIDGET 4 -->
-                                            <div class="col-12 col-sm-6 col-xl-3 p-3">
-                                                <div class="widget widget4 card">
-                                                    <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
-
-                                                        <div class="col">
-                                                            <span class="h6">Features</span>
-                                                        </div>
-
-                                                        <button type="button" class="btn btn-icon">
-                                                            <i class="icon icon-dots-vertical"></i>
-                                                        </button>
-
-                                                    </div>
-
-                                                    <div class="widget-content pt-2 pb-8 d-flex flex-column align-items-center justify-content-center">
-                                                        <div class="title text-info">42</div>
-                                                        <div class="sub-title h6 text-muted">PROPOSALS</div>
-                                                    </div>
-
-                                                    <div class="widget-footer p-4 bg-light row no-gutters align-items-center">
-                                                        <span class="text-muted">Implemented:</span>
-                                                        <span class="ml-2">8</span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {% include directory ~ '/templates/partials/homewidgetfeature.html.twig' %}
                                             <!-- / WIDGET 4 -->
 
                                             <!-- WIDGET 5 -->
                                             <div class="col-12 p-3">
-
                                                 <div class="widget widget5 card">
-
                                                     <div class="widget-header px-4 row no-gutters align-items-center justify-content-between">
-
                                                         <div class="col">
                                                             <span class="h6">Github Issues</span>
                                                         </div>
 
                                                         <div>
-
                                                             <button type="button" class="widget5-option-change-btn btn btn-link" data-interval="TW">
                                                                 This Week
                                                             </button>

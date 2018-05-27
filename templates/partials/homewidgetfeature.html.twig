@@ -1,0 +1,29 @@
+<div class="col-12 col-sm-6 col-xl-3 p-3">
+  <div class="widget widget4 card">
+      <div class="widget-header pl-4 pr-2 row no-gutters align-items-center justify-content-between">
+          <div class="col">
+            <div id="w4-data">
+            {% set res = page.homewidgetfeature.custom_block.field_endpoint_url[0]['#context'].value %}
+            {% set jsonobj = res | json_decode %}  
+            {% if jsonobj is defined %}
+            {{ res }}
+            {% else %}
+            {{ 'No data found!' }}
+            {% endif %} 
+            </div>
+            <span class="h6">Features</span>
+          </div>
+          <button type="button" class="btn btn-icon">
+              <i class="icon icon-dots-vertical"></i>
+          </button>
+      </div>
+      <div class="widget-content pt-2 pb-8 d-flex flex-column align-items-center justify-content-center">
+          <div class="title text-info">42</div>
+          <div class="sub-title h6">PROPOSALS</div>
+      </div>
+      <div class="widget-footer p-4 bg-light row no-gutters align-items-center">
+          <span class="text-muted">Implemented:</span>
+          <span class="ml-2">8</span>
+      </div>
+  </div>
+</div>

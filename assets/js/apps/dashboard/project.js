@@ -2258,6 +2258,7 @@
     });
 
     $(document).ready(function(){
+        // home widget 1
         w1Data = JSON.parse($("#w1-data").text());
         for ( k in w1Data.data.count ) {
             $(".widget1 .title").text(w1Data.data.count[k]);            
@@ -2271,6 +2272,33 @@
             break;
         }
         $(".widget1 .widget-footer .text-muted").text(w1Data.data.extra.label);
+        
+        // home widget 2
+        w1Data = JSON.parse($("#w2-data").text());
+        $(".widget2 .title").text(w1Data.data.count);
+        $(".widget2 .sub-title").text(w1Data.data.label);
+
+        // footer
+        $(".widget2 .widget-footer .ml-2").text(w1Data.data.extra.count);
+        $(".widget2 .widget-footer .text-muted").text(w1Data.data.extra.label);
+        
+        // home widget issue
+        w1Data = JSON.parse($("#w3-data").text());
+        $(".widget3 .title").text(w1Data.data.count);
+        $(".widget3 .sub-title").text(w1Data.data.label);
+
+        // footer
+        $(".widget3 .widget-footer .ml-2").text(w1Data.data.extra.count);
+        $(".widget3 .widget-footer .text-muted").text(w1Data.data.extra.label);
+        
+        // home widget feature
+        w1Data = JSON.parse($("#w4-data").text());
+        $(".widget4 .title").text(w1Data.data.count);
+        $(".widget4 .sub-title").text(w1Data.data.label);
+
+        // footer
+        $(".widget4 .widget-footer .ml-2").text(w1Data.data.extra.count);
+        $(".widget4 .widget-footer .text-muted").text(w1Data.data.extra.label);
     });
 
     $("#w1-select").on('change', function(){
