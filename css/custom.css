@@ -55,6 +55,106 @@
   font-size: 1.3rem;
   color: #2196F3;
 }
+/*register page*/
+.form-wrapper #block-userlogin h2{
+  display: none;
+}
+#registration{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  width: 100%;
+  min-height: 100%;
+  background: url("../assets/images/backgrounds/dark-material-bg.jpg") no-repeat;
+  background-size: auto auto;
+  -webkit-background-size: cover;
+  background-size: cover;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+#registration .form-wrapper{
+  width: 38.4rem;
+  max-width: 38.4rem;
+  background: #FFFFFF;
+  text-align: center;
+}
+#registration .form-wrapper .logo{
+  width: 12.8rem;
+  height: 12.8rem;
+  line-height: 12.8rem;
+  font-size: 8.6rem;
+  font-weight: 500;
+  margin: 3.2rem auto;
+  color: #FFFFFF;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+#registration .form-wrapper .title{
+  font-size: 1.7rem;
+}
+#registration .user-register-form .form-wrapper{
+  width: 100%;
+}
+#registration .user-register-form .js-form-item{
+  margin-bottom: 10px;
+}
+#registration .user-register-form .js-form-item label{
+  display: none;
+}
+#registration .user-register-form .js-form-type-password{
+  
+}
+#registration .user-register-form .js-form-item input[type="email"]{
+  width: 32rem;
+}
+#registration .user-register-form .js-form-item input[name="pass[pass2]"]{
+  margin-bottom: 25px;
+}
+#registration .user-register-form .js-form-item input{
+  font-size: 1.9rem;
+  border-bottom: 1px solid #212529;
+}
+#registration .user-register-form .form-wrapper .js-form-submit{
+  cursor: pointer;
+  width: 22rem;
+  background-color: #2196F3;
+  border-color: #2196F3;
+  color: #fff;
+  padding: 0 1.6rem;
+  line-height: 3.6rem;
+  border-radius: 2px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: normal;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+#registration .description{
+  display: none;
+}
+#registration .field--type-image,
+#registration details.form-wrapper,
+#registration .field--type-string,
+#registration .field--type-entity-reference{
+  display: none;
+}
 /*profile page*/
 #w1-data,
 #w2-data,

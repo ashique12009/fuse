@@ -45,10 +45,23 @@ function fuse_preprocess_page(&$variables) {
   $pic_path = "";
   if ( $user->isAuthenticated() ) {
     if ( is_object($user->get('user_picture')) ) {
-      $pic_path = $user->get('user_picture')->entity->url();
+      if ( ! is_null($user->get('user_picture')->entity) ) {
+        $pic_path = $user->get('user_picture')->entity->url();
+      }
     }
     $variables['user_pic_path'] = $pic_path;
   }
+
+  $entity = \Drupal::entityManager()
+    ->getStorage('user')
+    ->create(array());
+
+  $formObject = \Drupal::entityManager()
+    ->getFormObject('user', 'register')
+    ->setEntity($entity);
+
+  $form = \Drupal::formBuilder()->getForm($formObject);
+  $variables['register_form'] = $form;
 }
 
 function fuse_theme_suggestions_page_alter(array &$suggestions, array $variables) {
