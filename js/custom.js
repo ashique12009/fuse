@@ -11,6 +11,10 @@
   $('.user-register-form input[name="pass[pass1]"]').attr('placeholder', 'Password');
   $('.user-register-form input[name="pass[pass2]"]').attr('placeholder', 'Confirm Password');
   
+  // Reset password
+  $('.user-form input[type="email"]').attr('placeholder', 'Email');
+  $('.user-form input[name="name"]').attr('placeholder', 'Username');
+
   // Sidebar
   $('.close-me').on('click', function(){
     $('.page-sidebar').hide();
