@@ -73,6 +73,43 @@ function fuse_preprocess_page(&$variables) {
 
   $form = \Drupal::formBuilder()->getForm($formObject);
   $variables['user_pass_form'] = $form;
+
+  // knowledgebase page
+  if ( $user->isAuthenticated() ) {
+    
+    $nids = \Drupal::entityQuery('node')
+            ->condition('type', 'knowledgebase')
+            ->condition('field_taxonomy', 7)
+            ->execute();
+    $nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
+    
+    $variables['your_account_nodes'] = $nodes;
+    
+    $nids = \Drupal::entityQuery('node')
+            ->condition('type', 'knowledgebase')
+            ->condition('field_taxonomy', 8)
+            ->execute();
+    $nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
+    
+    $variables['your_selling_nodes'] = $nodes;
+    
+    $nids = \Drupal::entityQuery('node')
+            ->condition('type', 'knowledgebase')
+            ->condition('field_taxonomy', 9)
+            ->execute();
+    $nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
+    
+    $variables['your_buying_nodes'] = $nodes;
+    
+    $nids = \Drupal::entityQuery('node')
+            ->condition('type', 'knowledgebase')
+            ->condition('field_taxonomy', 10)
+            ->execute();
+    $nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
+    
+    $variables['your_support_nodes'] = $nodes;
+
+  }
 }
 
 function fuse_theme_suggestions_page_alter(array &$suggestions, array $variables) {

@@ -207,3 +207,28 @@
   border-radius: 10px;
   text-align: center;
 }
+/*knowledgebase page*/
+.knowledgebase-page{
+
+}
+.knowledgebase-page col-even{
+  
+}
+.knowledgebase-page col-odd{
+  margin-left: 15px;
+}
+.knowledgebase-page .col-box{
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  margin-bottom: 25px;
+  margin-left: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.knowledgebase-page .col-box a{
+  display: block;
+  text-decoration: none;
+  padding: 5px 10px; 
+}
+.knowledgebase-page .col-box a:hover{
+  background-color: #ccc;
+}
