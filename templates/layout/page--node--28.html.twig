@@ -46,55 +46,72 @@
  */
 #}
 
-{# <!DOCTYPE html>
-<html lang="en-us">
-
-<head>
-    <title>Project Dashboard</title>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700italic,700,900,900italic" rel="stylesheet">
-
-    <!-- STYLESHEETS -->
-    <style type="text/css">
-        [fuse-cloak],
-        .fuse-cloak {
-            display: none !important;
-        }
-    </style>
-</head> #}
-
 <body class="layout layout-vertical layout-left-navigation layout-below-toolbar layout-below-footer">
     <main>
         <div id="wrapper">
+            
             {% include directory ~ '/templates/partials/left-menu.html.twig' %}
+
             <div class="content-wrapper">
+
                 {% include directory ~ '/templates/partials/top-menu.html.twig' %}
+                
                 <div class="content custom-scrollbar">
-                    <div class="page-layout simple right-sidebar">
-                        <div class="page-content-wrapper custom-scrollbar">
-                            <!-- HEADER -->
-                            <div class="page-header bg-primary text-auto p-6">
-                                <span class="h4">{{ node.label }}</span>
-                            </div>
-                            <!-- / HEADER -->
-                            <!-- CONTENT -->
-                            <div class="page-content p-6">
-                                <!-- DEMO CONTENT -->
-                                <div class="demo-content basic-page-content">
-                                {{ page.content }}
-                                </div>
-                                <!-- / DEMO CONTENT -->
-                            </div>
-                            <!-- / CONTENT -->
-                        </div>
-                        <!-- PAGE CONTENT WRAPPER -->
-                        {% if logged_in %}
-                        {% include directory ~ '/templates/partials/aside-sidebar.html.twig' %}
-                        {% endif %}
+                  <div class="page-layout simple full-width">
+                    <!-- HEADER -->
+                    <div class="page-header bg-primary text-auto p-6">
+                        <span class="h4">{{ node.label }}</span>
                     </div>
+                    <!-- / HEADER -->
+                    <!-- CONTENT -->
+                    <div class="page-content p-6">
+                      <!-- DEMO CONTENT -->
+                      <div class="demo-content basic-page-content knowledgebase-page">
+                        {{ page.content }}
+                        <div class="row">
+                        {% set taxo = get.taxo %}
+                          {% if taxo == "ya" %}
+                            <div class="col-box col-lg-12 col-even">
+                                <label>Your Account</label>
+                                {% set your_account_nodes = your_account_nodes_all %}
+                                {% for nd in your_account_nodes %}
+                                    <a href="{{url('<front>')}}node/{{nd.nid.value}}">{{ nd.title.value }}</a>
+                                {% endfor %}
+                            </div>
+                          {% elseif taxo == "se" %}
+                            <div class="col-box col-lg-12 col-odd">
+                                <label>Selling</label>
+                                {% set your_selling_nodes = your_selling_nodes_all %}
+                                {% for nd in your_selling_nodes %}
+                                    <a href="{{url('<front>')}}node/{{nd.nid.value}}">{{ nd.title.value }}</a>
+                                {% endfor %}
+                            </div>
+                          {% endif %}
+                        </div>
+                        <div class="row">
+                          {% if taxo == "bu" %}  
+                            <div class="col-box col-lg-12 col-even">
+                                <label>Buying</label>
+                                {% set your_buying_nodes = your_buying_nodes_all %}
+                                {% for nd in your_buying_nodes %}
+                                    <a href="{{url('<front>')}}node/{{nd.nid.value}}">{{ nd.title.value }}</a>
+                                {% endfor %}
+                            </div>
+                          {% elseif taxo == "is" %}
+                            <div class="col-box col-lg-12 col-odd">
+                                <label>Item Support</label>
+                                {% set your_support_nodes = your_support_nodes_all %}
+                                {% for nd in your_support_nodes %}
+                                    <a href="{{url('<front>')}}node/{{nd.nid.value}}">{{ nd.title.value }}</a>
+                                {% endfor %}
+                            </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <!-- / DEMO CONTENT -->
+                    </div>
+                    <!-- / CONTENT -->
+                  </div>
                 </div>
                 
                 <nav id="footer" class="bg-dark text-auto row no-gutters align-items-center px-6">
@@ -103,7 +120,9 @@
                     </a>
                 </nav>
             </div>
+            
             {% include directory ~ '/templates/partials/quick-panel-sidebar.html.twig' %}
+
         </div>
     </main>
 </body>

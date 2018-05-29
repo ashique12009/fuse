@@ -55,6 +55,19 @@
   font-size: 1.3rem;
   color: #2196F3;
 }
+#login ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+#login ul li{
+  margin-top: 15px;
+}
+#login ul li a{
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: #2196F3;
+}
 /*register page*/
 .form-wrapper #block-userlogin h2{
   display: none;
@@ -224,6 +237,9 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+.knowledgebase-page .col-box label{
+  font-weight: bold;
+}
 .knowledgebase-page .col-box a{
   display: block;
   text-decoration: none;
@@ -231,4 +247,28 @@
 }
 .knowledgebase-page .col-box a:hover{
   background-color: #ccc;
+}
+.knowledgebase-page .all-karticles{
+  color: #039be5;
+}
+/*search*/
+#search-form input[type="search"]{
+  border: 1px solid #ccc;
+}
+/*responsive*/
+ @media only screen and (max-width: 360px) {
+  nav .col-auto{
+     margin-top: -47px; 
+  }
+  .toggle-aside-button{
+    z-index: 1;
+  }
+}
+@media only screen and (min-width: 361px) and (max-width: 768px) {
+  nav .col-auto{
+     margin-top: -65px; 
+  }
+  .toggle-aside-button{
+    z-index: 1;
+  }
 }

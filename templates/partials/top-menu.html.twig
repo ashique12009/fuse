@@ -40,12 +40,12 @@
               </div>
             </a>
 
-            <a class="dropdown-item" href="#">
+            {# <a class="dropdown-item" href="#">
               <div class="row no-gutters align-items-center flex-nowrap">
                 <i class="icon-email"></i>
                 <span class="px-3">Inbox</span>
               </div>
-            </a>
+            </a> #}
 
             <a class="dropdown-item" href="#">
               <div class="row no-gutters align-items-center flex-nowrap">
@@ -67,15 +67,19 @@
 
         <div class="toolbar-separator"></div>
 
-        <button type="button" class="search-button btn btn-icon">
-          <i class="icon icon-magnify"></i>
-        </button>
+        {% if logged_in %}
+          <a href="{{ path('<front>') }}search/node">
+          <button type="button" class="search-button btn btn-icon">
+            <i class="icon icon-magnify"></i>
+          </button>
+          </a>
 
-        <div class="toolbar-separator"></div>
+          <div class="toolbar-separator"></div>
 
-        <button type="button" class="side-bar-button btn btn-icon">
-          <i class="icon icon-format-list-bulleted"></i>
-        </button>
+          <button type="button" class="side-bar-button btn btn-icon">
+            <i class="icon icon-format-list-bulleted"></i>
+          </button>
+        {% endif %}
         
         {# <div class="toolbar-separator"></div>
 

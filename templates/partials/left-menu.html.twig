@@ -3,8 +3,9 @@
 
         <div class="aside-toolbar">
             <div class="logo">
-                <span class="logo-icon">F</span>
-                <span class="logo-text">FUSE</span>
+                <a href="{{ path('<front>') }}"><img src="{{ logo_url }}" alt="logo"></a>
+                {# <span class="logo-icon">{{ logo_url }}</span> #}
+                 <span class="logo-text">{{ site_name }}</span> 
             </div>
             <button id="toggle-fold-aside-button" type="button" class="btn btn-icon d-none d-lg-block" data-fuse-aside-toggle-fold>
                 <i class="icon icon-backburger"></i>

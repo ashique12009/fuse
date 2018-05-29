@@ -49,63 +49,70 @@
 <body class="layout layout-vertical layout-left-navigation layout-below-toolbar layout-below-footer">
     <main>
         <div id="wrapper">
-            
             {% include directory ~ '/templates/partials/left-menu.html.twig' %}
-
             <div class="content-wrapper">
-
                 {% include directory ~ '/templates/partials/top-menu.html.twig' %}
-                
                 <div class="content custom-scrollbar">
-                  <div class="page-layout simple full-width">
-                    <!-- HEADER -->
-                    <div class="page-header bg-primary text-auto p-6">
-                        <span class="h4">{{ node.label }}</span>
-                    </div>
-                    <!-- / HEADER -->
-                    <!-- CONTENT -->
-                    <div class="page-content p-6">
-                      <!-- DEMO CONTENT -->
-                      <div class="demo-content basic-page-content knowledgebase-page">
-                        {{ page.content }}
-                        <div class="row">
-                            <div class="col-box col-lg-5 col-even">
-                                <label>Your Account</label>
-                                {% set your_account_nodes = your_account_nodes %}
-                                {% for nd in your_account_nodes %}
-                                    <a href="{{url('<front>')}}node/{{nd.nid.value}}">{{ nd.title.value }}</a>
-                                {% endfor %}                                
+                    <div class="page-layout simple right-sidebar">
+                        <div class="page-content-wrapper custom-scrollbar">
+                            <!-- HEADER -->
+                            <div class="page-header bg-primary text-auto p-6">
+                                <span class="h4">{{ node.label }}</span>
                             </div>
-                            <div class="col-box col-lg-5 col-odd">
-                                <label>Selling</label>
-                                {% set your_selling_nodes = your_selling_nodes %}
-                                {% for nd in your_selling_nodes %}
-                                    <a href="{{url('<front>')}}node/{{nd.nid.value}}">{{ nd.title.value }}</a>
-                                {% endfor %}
+                            <!-- / HEADER -->
+                            <!-- CONTENT -->
+                            <div class="page-content p-6">
+                                <!-- DEMO CONTENT -->
+                                <div class="demo-content basic-page-content knowledgebase-page">
+                                    {{ page.content }}
+                                    <div class="row">
+                                        <div class="col-box col-lg-5 col-even">
+                                            <label>Your Account</label>
+                                            {% set count_your_account = your_account_nodes_all|length %}
+                                            {% set your_account_nodes = your_account_nodes %}
+                                            {% for nd in your_account_nodes %}
+                                                <a href="{{url('<front>')}}node/{{nd.nid.value}}">{{ nd.title.value }}</a>
+                                            {% endfor %}
+                                            <a class="all-karticles" href="{{url('<front>')}}node/28/?taxo=ya">See all articles ({{count_your_account}})</a>
+                                        </div>
+                                        <div class="col-box col-lg-5 col-odd">
+                                            <label>Selling</label>
+                                            {% set count_selling = your_selling_nodes_all|length %}
+                                            {% set your_selling_nodes = your_selling_nodes %}
+                                            {% for nd in your_selling_nodes %}
+                                                <a href="{{url('<front>')}}node/{{nd.nid.value}}">{{ nd.title.value }}</a>
+                                            {% endfor %}
+                                            <a class="all-karticles" href="{{url('<front>')}}node/28/?taxo=se">See all articles ({{count_selling}})</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-box col-lg-5 col-even">
+                                            <label>Buying</label>
+                                            {% set count_buying = your_buying_nodes_all|length %}
+                                            {% set your_buying_nodes = your_buying_nodes %}
+                                            {% for nd in your_buying_nodes %}
+                                                <a href="{{url('<front>')}}node/{{nd.nid.value}}">{{ nd.title.value }}</a>
+                                            {% endfor %}
+                                            <a class="all-karticles" href="{{url('<front>')}}node/28/?taxo=bu">See all articles ({{count_buying}})</a>
+                                        </div>
+                                        <div class="col-box col-lg-5 col-odd">
+                                            <label>Item Support</label>
+                                            {% set count_support = your_support_nodes_all|length %}
+                                            {% set your_support_nodes = your_support_nodes %}
+                                            {% for nd in your_support_nodes %}
+                                                <a href="{{url('<front>')}}node/{{nd.nid.value}}">{{ nd.title.value }}</a>
+                                            {% endfor %}
+                                            <a class="all-karticles" href="{{url('<front>')}}node/28/?taxo=is">See all articles ({{count_support}})</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- / DEMO CONTENT -->
                             </div>
+                            <!-- / CONTENT -->
                         </div>
-                        <div class="row">
-                            <div class="col-box col-lg-5 col-even">
-                                <label>Buying</label>
-                                {% set your_buying_nodes = your_buying_nodes %}
-                                {% for nd in your_buying_nodes %}
-                                    <a href="{{url('<front>')}}node/{{nd.nid.value}}">{{ nd.title.value }}</a>
-                                {% endfor %}
-                            </div>
-                            <div class="col-box col-lg-5 col-odd">
-                                <label>Item Support</label>
-                                {% set your_support_nodes = your_support_nodes %}
-                                {% for nd in your_support_nodes %}
-                                    <a href="{{url('<front>')}}node/{{nd.nid.value}}">{{ nd.title.value }}</a>
-                                {% endfor %}
-                            </div>
-                        </div>
-
-                      </div>
-                      <!-- / DEMO CONTENT -->
-                    </div>
-                    <!-- / CONTENT -->
-                  </div>
+                        <!-- PAGE CONTENT WRAPPER -->
+                        {% include directory ~ '/templates/partials/aside-sidebar.html.twig' %}
+                    </div>                    
                 </div>
                 
                 <nav id="footer" class="bg-dark text-auto row no-gutters align-items-center px-6">

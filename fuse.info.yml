@@ -21,6 +21,7 @@ regions:
   content: 'Main Content'
   member_section: 'Member List'
   login: 'Login Section'
+  login_form: 'Home Login'
   home_widget_1: 'Home Widget 1'
   home_widget_github: 'Home Widget Github'
   home_widget_task_distribution: 'Home Task Distribution'

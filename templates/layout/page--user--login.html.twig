@@ -63,7 +63,30 @@
                                 <span>F</span>
                             </div>
                             <div class="title mt-4 mb-8">Log in to your account</div>
-                            {{ page.login }}
+                            {# {{ page.login_form }} #}
+                            <form class="user-login-form" data-drupal-selector="user-login-form" action="{{base_path}}" method="post" id="user-login-form" accept-charset="UTF-8">
+                                <div class="js-form-item form-item js-form-type-textfield form-item-name js-form-item-name">
+                                    <label for="edit-name--3" class="js-form-required form-required">Username</label>
+                                    <input autocorrect="none" autocapitalize="none" spellcheck="false" data-drupal-selector="edit-name" type="text" id="edit-name--3" name="name" value="" size="15" maxlength="60" class="form-text required" required="required" aria-required="true" />
+                                </div>
+                                <div class="js-form-item form-item js-form-type-password form-item-pass js-form-item-pass">
+                                    <label for="edit-pass--3" class="js-form-required form-required">Password</label>
+                                    <input data-drupal-selector="edit-pass" type="password" id="edit-pass--3" name="pass" size="15" maxlength="128" class="form-text required" required="required" aria-required="true" />
+                                </div>
+                                <input autocomplete="off" data-drupal-selector="form-rgw7msmnqnitkuix3dnkfqjwrilvwavnrcprt-ruic0" type="hidden" name="form_build_id" value="form-RGW7MsMNQniTkUIX3dnkFQjWrilvWAvNrCpRt-ruIC0" />
+                                <input data-drupal-selector="edit-user-login-form" type="hidden" name="form_id" value="user_login_form" />
+                                <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions--3">
+                                    <input data-drupal-selector="edit-submit" type="submit" id="edit-submit--3" name="op" value="Log in" class="button js-form-submit form-submit" />
+                                </div>
+                            </form>
+                            <ul>
+                                <li>
+                                    <a class="create-account-link" href="{{base_path}}user/register">Create new account</a>
+                                </li>
+                                <li>
+                                    <a class="request-password-link" href="{{base_path}}user/password">Reset your password</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

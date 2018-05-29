@@ -16,10 +16,13 @@
   $('.user-form input[name="name"]').attr('placeholder', 'Username');
 
   // Sidebar
+  $('.page-sidebar').hide();
   $('.close-me').on('click', function(){
     $('.page-sidebar').hide();
   });
+  
   $('.side-bar-button').on('click', function(){
-    $('.page-sidebar').show();
+    $('.page-sidebar').toggle();
   });
+  
 })(jQuery);
