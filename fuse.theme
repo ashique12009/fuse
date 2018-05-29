@@ -156,6 +156,10 @@ function fuse_preprocess_page(&$variables) {
   $config = \Drupal::config('system.site');
   $variables['site_name'] = $config->get('name');
 
+  $variables['base_path'] = base_path();
+
+  $tmembers = db_query("SELECT count(u.uid) FROM {users} u WHERE u.uid>0 AND u.uid<>1")->fetchField();
+  $variables['tmembers'] = $tmembers;
 }
 
 function fuse_theme_suggestions_page_alter(array &$suggestions, array $variables) {

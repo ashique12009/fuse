@@ -35,7 +35,12 @@
           <li class="nav-item">
             <a class="nav-link ripple with-arrow collapsed" data-toggle="collapse" data-target="#collapse-user" href="#" aria-expanded="false" aria-controls="collapse-user">
               <i class="icon s-4 icon-view-quilt"></i>
-              <span>{{ item.title }}</span>
+              <span class="itemtitle">{{ item.title }}</span>
+              {% if item.title == "Users" %}
+              <label class="unumber">{{tmembers}}</label>
+              {% else %}
+              <label class="unumber"></label>
+              {% endif %}
             </a>
             {{ menus.submenu_links(item.below, attributes, menu_level + 1) }}
           </li>
@@ -43,7 +48,12 @@
           <li class="nav-item">
             <a class="nav-link ripple" href="{{ item.url }}" data-url="index.html">
               <i class="icon s-4 icon-view-quilt"></i>
-              <span>{{ item.title }}</span>
+              <span class="itemtitle">{{ item.title }}</span>
+              {% if item.title == "Users" %}
+              <label class="unumber">{{tmembers}}</label>
+              {% else %}
+              <label class="unumber"></label>
+              {% endif %}
             </a>
           </li>
         {% endif %}
@@ -59,7 +69,12 @@
       {% for item in chunk %}
         <li class="nav-item">
           <a class="nav-link ripple " href="{{ item.url }}" data-url="user-interface-page-layouts-simple-full-width.html">
-            <span>{{ item.title }}</span>
+            <span class="itemtitle">{{ item.title }}</span>
+            {% if item.title == "Users" %}
+              <label class="unumber">{{tmembers}}</label>
+              {% else %}
+              <label class="unumber"></label>
+              {% endif %}
           </a>
         </li>
       {% endfor %}
