@@ -17,7 +17,7 @@ fonts:
 
 global-js:
   js:
-    assets/node_modules/jquery/dist/jquery.min.js: {}
+    # assets/node_modules/jquery/dist/jquery.min.js: {}
     assets/node_modules/mobile-detect/mobile-detect.min.js: {}
     assets/node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js: {}
     assets/node_modules/popper.js/dist/umd/popper.min.js: {}

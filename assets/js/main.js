@@ -1,4 +1,5 @@
-(function ()
+jQuery.noConflict();
+(function ($)
 {
     $('document').ready(function ()
     {
@@ -116,4 +117,4 @@
      console.info(currentStep);
      });*/
 
-})();
+})(jQuery);

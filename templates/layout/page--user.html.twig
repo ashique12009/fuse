@@ -69,15 +69,10 @@
 <body class="layout layout-vertical layout-left-navigation layout-below-toolbar layout-below-footer">
     <main>
         <div id="wrapper">
-            
             {% include directory ~ '/templates/partials/left-menu.html.twig' %}
-
             <div class="content-wrapper">
-                
                 {% include directory ~ '/templates/partials/top-menu.html.twig' %}
-
                 <div class="content custom-scrollbar">
-
                     <div id="project-dashboard" class="page-layout simple right-sidebar">
                         <input type="hidden" id="tmembers" value="{{tmembers}}" />
                         <div class="page-content-wrapper custom-scrollbar">
@@ -91,105 +86,42 @@
                                         <i class="icon icon-menu"></i>
                                     </button>
                                 </div>
-
-                                {# <div class="row no-gutters align-items-center project-selection">
-                                    <div class="selected-project h6 px-4 py-2">ACME Corp. Backend App</div>
-                                    <div class="project-selector">
-                                        <button type="button" class="btn btn-icon">
-                                            <i class="icon icon-dots-horizontal"></i>
-                                        </button>
-                                    </div>
-                                </div> #}
                             </div>
                             <!-- / HEADER -->
 
                             <!-- CONTENT -->
-                            <div class="page-content">
-
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-
-                                    <li class="nav-item">
-                                        <a class="nav-link btn active" id="home-tab" data-toggle="tab" href="#home-tab-pane" role="tab" aria-controls="home-tab-pane" aria-expanded="true">Home</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link btn" id="budget-summary-tab" data-toggle="tab" href="#budget-summary-tab-pane" role="tab" aria-controls="budget-summary-tab-pane">Budget Summary</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link btn" id="team-members-tab" data-toggle="tab" href="#team-members-tab-pane" role="tab" aria-controls="team-members-tab-pane">Team Members</a>
-                                    </li>
+                            <div class="page-content p-6">
+                                <ul class="bprimary">
+                                    <li><a href="{{ path('<front>') }}user">View</a></li>
+                                    <li><a href="{{ path('<front>') }}user/{{ user_id }}/edit">Edit</a></li>
                                 </ul>
-
-                                <div class="tab-content">
-                                    <div class="tab-pane fade show active p-3" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab">
-
-                                        <!-- WIDGET GROUP -->
-                                        <div class="widget-group row no-gutters">
-                                            <!-- WIDGET 1 -->
-                                            {% include directory ~ '/templates/partials/homewidget1.html.twig'%}
-                                            <!-- / WIDGET 1 -->
-
-                                            <!-- WIDGET 2 -->
-                                            {% include directory ~ '/templates/partials/homewidget2.html.twig' %}
-                                            <!-- / WIDGET 2 -->
-
-                                            <!-- WIDGET 3 -->
-                                            {% include directory ~ '/templates/partials/homewidgetissue.html.twig' %}
-                                            <!-- / WIDGET 3 -->
-
-                                            <!-- WIDGET 4 -->
-                                            {% include directory ~ '/templates/partials/homewidgetfeature.html.twig' %}
-                                            <!-- / WIDGET 4 -->
-
-                                            <!-- WIDGET 5 -->
-                                            {% include directory ~ '/templates/partials/homegithub.html.twig' %}
-                                            <!-- / WIDGET 5 -->
-
-                                            <!-- WIDGET 6 -->
-                                            {% include directory ~ '/templates/partials/taskdist.html.twig' %}
-                                            <!-- / WIDGET 6 -->
-
-                                            <!-- WIDGET 7 -->
-                                            {% include directory ~ '/templates/partials/homeschedule.html.twig' %}
-                                            <!-- / WIDGET 7 -->
-                                        </div>
-                                        <!-- / WIDGET GROUP -->
-                                    </div>
-                                    <div class="tab-pane fade p-3" id="budget-summary-tab-pane" role="tabpanel" aria-labelledby="budget-summary-tab">
-                                        <!-- WIDGET GROUP -->
-                                        <div class="widget-group row no-gutters">
-                                            <!-- WIDGET 8 -->
-                                            {% include directory ~ '/templates/partials/widget8.html.twig' %}
-                                            <!-- / WIDGET 8 -->
-
-                                            <!-- WIDGET 9 -->
-                                            {% include directory ~ '/templates/partials/widget9.html.twig' %}
-                                            <!-- / WIDGET 9 -->
-
-                                            <!-- WIDGET 10 -->
-                                            {% include directory ~ '/templates/partials/widget10.html.twig' %}
-                                            <!-- / WIDGET 10 -->
-                                        </div>
-                                        <!-- / WIDGET GROUP -->
-                                    </div>
-                                    <div class="tab-pane fade p-6" id="team-members-tab-pane" role="tabpanel" aria-labelledby="team-members-tab">
-                                        <!-- WIDGET GROUP -->
-                                        <div class="widget-group row no-gutters">
-                                            <!-- WIDGET 1 -->
-                                            {% include directory ~ '/templates/partials/widget1.html.twig' %}
-                                            <!-- WIDGET 1 -->
-                                        </div>
-                                    </div>
+                                <div>
+                                    {% if user_pic_path == "" %}
+                                    <img src="{{ base_path ~ directory }}/assets/images/avatars/profile.jpg">
+                                    {% else %}
+                                    <img src="{{ user_pic_path }}">
+                                    {% endif %}
+                                </div>                                
+                                <div>
+                                    <label>Name:</label>
+                                    <label>{{ userObj.field_name.value }}</label>
                                 </div>
-
+                                <div>
+                                    <label>Phone:</label>
+                                    <label>{{ userObj.field_phone.value }}</label>
+                                </div>
+                                <div>
+                                    <label>Office:</label>
+                                    <label>{{ userObj.field_office.value }}</label>
+                                </div>
+                                <div>
+                                    <label>Position:</label>
+                                    <label>{{ user_position }}</label>
+                                </div>
                             </div>
                             <!-- / CONTENT -->
-
                         </div>
-
                         {% include directory ~ '/templates/partials/aside-sidebar.html.twig' %}
-                        
                     </div>
                 </div>
 

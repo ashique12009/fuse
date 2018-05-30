@@ -39,7 +39,9 @@
     var li = $(this);
     var textValue = li.children('.nav-link').children('.itemtitle').text();
     if ( textValue == "Users" ) {
-      li.children('.nav-link').children('.unumber').text(tmembers);
+      if ( tmembers != "undefined" ) {
+        li.children('.nav-link').children('.unumber').text(tmembers);
+      }
     }
   });
 

@@ -1,6 +1,7 @@
 <?php 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element;
+use Drupal\taxonomy\Entity\Term;
 
 function fuse_preprocess_page_title(&$variables) {
   
@@ -42,6 +43,7 @@ function fuse_preprocess_page(&$variables) {
   $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
   $name = $user->get('name')->value;
   $variables['user_name'] = $name;
+  $variables['user_id'] = $user->get('uid')->value;
   $pic_path = "";
   if ( $user->isAuthenticated() ) {
     if ( is_object($user->get('user_picture')) ) {
@@ -50,6 +52,14 @@ function fuse_preprocess_page(&$variables) {
       }
     }
     $variables['user_pic_path'] = $pic_path;
+    $variables['userObj'] = $user;
+     if ( ! is_null($user->get('field_position')->getValue()) ) {
+      $tid = $user->get('field_position')->getValue();
+      if ( count($tid) > 0 ) {
+        $term = Term::load($tid[0]['target_id']);
+        $variables['user_position'] = $term->getName();
+      }
+    }
   }
 
   $entity = \Drupal::entityManager()

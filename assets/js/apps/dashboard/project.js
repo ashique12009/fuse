@@ -1,4 +1,5 @@
-(function ()
+jQuery.noConflict();
+(function ($)
 {
     var data = {
         "projects"     : [
@@ -1996,10 +1997,12 @@
 
         function initChart()
         {
-            //chartData = data.widget5.mainChart[widget5Option];
-            chartData = JSON.parse($("#widget5-data").text()).mainChart[widget5Option];
-            // console.log(chartData);
-            chartd3.datum(chartData).call(chart);
+            if ( $("#widget5-data").text() != "" ) {
+                //chartData = data.widget5.mainChart[widget5Option];
+                chartData = JSON.parse($("#widget5-data").text()).mainChart[widget5Option];
+                // console.log(chartData);
+                chartd3.datum(chartData).call(chart);
+            }            
         }
 
         return chart;
@@ -2058,9 +2061,11 @@
             function initChart()
             {
                 //chartData = data.widget5.supporting[id].chart[widget5Option];
-                chartData = JSON.parse($("#widget5-data").text()).supporting[id].chart[widget5Option];
-                chartd3.datum(chartData).call(chart);
-                $('#widget5-' + id + '-chart .count').text(JSON.parse($("#widget5-data").text()).supporting[id].count[widget5Option]);
+                if ( $("#widget5-data").text() != "" ) {
+                    chartData = JSON.parse($("#widget5-data").text()).supporting[id].chart[widget5Option];
+                    chartd3.datum(chartData).call(chart);
+                    $('#widget5-' + id + '-chart .count').text(JSON.parse($("#widget5-data").text()).supporting[id].count[widget5Option]);
+                }
             }
 
             return chart;
@@ -2123,9 +2128,11 @@
 
         function initChart()
         {
-            //chartData = data.widget6.mainChart[widget6Option];
-            chartData = JSON.parse($("#widget6-data").text()).mainChart[widget6Option];
-            chartd3.datum(chartData).call(chart);
+            if ( $("#widget6-data").text() != "" ) {
+                //chartData = data.widget6.mainChart[widget6Option];            
+                chartData = JSON.parse($("#widget6-data").text()).mainChart[widget6Option];
+                chartd3.datum(chartData).call(chart);
+            }
         }
 
         return chart;
@@ -2181,10 +2188,12 @@
 
         function initChart()
         {
-            //console.log($("#widget8-data").text());
-            chartData = JSON.parse($("#widget8-data").text());
-            //chartData = data.widget8.mainChart;
-            chartd3.datum(chartData).call(chart);
+            if ( $("#widget8-data").text() != "" ) {
+                //console.log($("#widget8-data").text());
+                chartData = JSON.parse($("#widget8-data").text());
+                //chartData = data.widget8.mainChart;
+                chartd3.datum(chartData).call(chart);
+            }
         }
 
         return chart;
@@ -2246,9 +2255,11 @@
 
             function initChart()
             {
-                //chartData = data.widget9[id].chart[widget9Option];
-                chartData = JSON.parse($("#widget9-data").text())[id].chart[widget9Option];
-                chartd3.datum(chartData).call(chart);
+                if ( $("#widget9-data").text() != "" ) {
+                    //chartData = data.widget9[id].chart[widget9Option];
+                    chartData = JSON.parse($("#widget9-data").text())[id].chart[widget9Option];
+                    chartd3.datum(chartData).call(chart);
+                }
             }
 
             return chart;
@@ -2264,47 +2275,55 @@
 
     $(document).ready(function(){
         // home widget 1
-        w1Data = JSON.parse($("#w1-data").text());
-        for ( k in w1Data.data.count ) {
-            $(".widget1 .title").text(w1Data.data.count[k]);            
-            break;
-        }
-        $(".widget1 .sub-title").text(w1Data.data.label);
+        if ( $("#w1-data").text() != "" ) {
+            w1Data = JSON.parse($("#w1-data").text());
+            for ( k in w1Data.data.count ) {
+                $(".widget1 .title").text(w1Data.data.count[k]);            
+                break;
+            }
+            $(".widget1 .sub-title").text(w1Data.data.label);
 
-        // footer
-        for ( k in w1Data.data.extra.count ) {
-            $(".widget1 .widget-footer .ml-2").text(w1Data.data.extra.count[k]);
-            break;
-        }
-        $(".widget1 .widget-footer .text-muted").text(w1Data.data.extra.label);
+            // footer
+            for ( k in w1Data.data.extra.count ) {
+                $(".widget1 .widget-footer .ml-2").text(w1Data.data.extra.count[k]);
+                break;
+            }
+            $(".widget1 .widget-footer .text-muted").text(w1Data.data.extra.label);
+        }        
         
         // home widget 2
-        w1Data = JSON.parse($("#w2-data").text());
-        $(".widget2 .title").text(w1Data.data.count);
-        $(".widget2 .sub-title").text(w1Data.data.label);
+        if ( $("#w2-data").text() != "" ) {
+            w1Data = JSON.parse($("#w2-data").text());
+            $(".widget2 .title").text(w1Data.data.count);
+            $(".widget2 .sub-title").text(w1Data.data.label);
 
-        // footer
-        $(".widget2 .widget-footer .ml-2").text(w1Data.data.extra.count);
-        $(".widget2 .widget-footer .text-muted").text(w1Data.data.extra.label);
-        
+            // footer
+            $(".widget2 .widget-footer .ml-2").text(w1Data.data.extra.count);
+            $(".widget2 .widget-footer .text-muted").text(w1Data.data.extra.label);
+        }
+                
         // home widget issue
-        w1Data = JSON.parse($("#w3-data").text());
-        $(".widget3 .title").text(w1Data.data.count);
-        $(".widget3 .sub-title").text(w1Data.data.label);
+        if ( $("#w3-data").text() != "" ) {
+            w1Data = JSON.parse($("#w3-data").text());
+            $(".widget3 .title").text(w1Data.data.count);
+            $(".widget3 .sub-title").text(w1Data.data.label);
 
-        // footer
-        $(".widget3 .widget-footer .ml-2").text(w1Data.data.extra.count);
-        $(".widget3 .widget-footer .text-muted").text(w1Data.data.extra.label);
+            // footer
+            $(".widget3 .widget-footer .ml-2").text(w1Data.data.extra.count);
+            $(".widget3 .widget-footer .text-muted").text(w1Data.data.extra.label);
+        }        
         
         // home widget feature
-        w1Data = JSON.parse($("#w4-data").text());
-        $(".widget4 .title").text(w1Data.data.count);
-        $(".widget4 .sub-title").text(w1Data.data.label);
+        if ( $("#w4-data").text() != "" ) {
+            w1Data = JSON.parse($("#w4-data").text());
+            $(".widget4 .title").text(w1Data.data.count);
+            $(".widget4 .sub-title").text(w1Data.data.label);
 
-        // footer
-        $(".widget4 .widget-footer .ml-2").text(w1Data.data.extra.count);
-        $(".widget4 .widget-footer .text-muted").text(w1Data.data.extra.label);
-
+            // footer
+            $(".widget4 .widget-footer .ml-2").text(w1Data.data.extra.count);
+            $(".widget4 .widget-footer .text-muted").text(w1Data.data.extra.label);
+        }
+        
         // home schedule widget
         $(".widget-7 .inactive").hide();
         // get first select option value
@@ -2345,4 +2364,4 @@
         $(".widget7 .widget-footer .text-muted").text(w1Data.data.extra.label);
     });
 
-})();
+})(jQuery);
